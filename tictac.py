@@ -18,7 +18,7 @@ image = pygame.transform.scale(image, (T, T))
 image.set_alpha(180)  # 70% d'opacité
 img_X = pygame.image.load("./IMG/xRed.png")
 img_X = pygame.transform.scale(img_X, (T//3 - 20, T//3 - 20))
-img_O = pygame.image.load("./IMG/circleRed.png")
+img_O = pygame.image.load("./IMG/circleWater.png")
 img_O = pygame.transform.scale(img_O, (T//3 - 20, T//3 - 20))
 
 # Grille
