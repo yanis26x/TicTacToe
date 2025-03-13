@@ -1,2 +1,2 @@
 ## TIC TAC TO
-![idk](IMG/screen,png)
+![idk](./IMG/screen.png)
