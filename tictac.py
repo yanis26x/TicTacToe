@@ -1,11 +1,20 @@
 import pygame
+import os
+import sys
 
 pygame.init()
 
+# Gérer les fichiers dans l'exécutable
+def get_path(relative_path):
+    """Retourne le bon chemin, que ce soit en mode script ou exécutable .exe"""
+    if getattr(sys, '_MEIPASS', False):  # Si c'est un .exe
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.dirname(__file__), relative_path)
+
 # Chargement des sons
-pygame.mixer.music.load("./OST/musicCool.wav")  # Musique de fond
+pygame.mixer.music.load(get_path("OST/musicCool.wav"))  # Musique de fond
 pygame.mixer.music.play(-1)  # Lecture en boucle
-son_victoire = pygame.mixer.Sound("./OST/yay.wav")
+son_victoire = pygame.mixer.Sound(get_path("OST/yay.wav"))
 
 # Création de la fenêtre
 T = 500
@@ -13,12 +22,12 @@ screen = pygame.display.set_mode((T, T))
 pygame.display.set_caption("Tic-Tac-Toe26x")
 
 # Chargement des images
-image = pygame.image.load("sang.png")
+image = pygame.image.load(get_path("IMG/sang.png"))
 image = pygame.transform.scale(image, (T, T))
 image.set_alpha(180)  # 70% d'opacité
-img_X = pygame.image.load("./IMG/xRed.png")
+img_X = pygame.image.load(get_path("IMG/xRed.png"))
 img_X = pygame.transform.scale(img_X, (T//3 - 20, T//3 - 20))
-img_O = pygame.image.load("./IMG/circleWater.png")
+img_O = pygame.image.load(get_path("IMG/circleWater.png"))
 img_O = pygame.transform.scale(img_O, (T//3 - 20, T//3 - 20))
 
 # Grille
@@ -51,7 +60,7 @@ def dessiner():
         pygame.draw.rect(screen, (255, 0, 0), (T//4, T//2, T//2, 50))
         text_btn = font.render("Recommencer", True, (0, 0, 0))
         screen.blit(text_btn, (T//4 + 20, T//2 + 10))
-
+    
     # Afficher "yanis26x" en bas à droite
     font_signature = pygame.font.Font(None, 30)
     signature = font_signature.render("yanis26x", True, (255, 0, 255))  # Couleur fuchsia
@@ -63,12 +72,12 @@ def victoire(j):
     return any(all(grille[y][x] == j for x in range(3)) for y in range(3)) or any(all(grille[y][x] == j for y in range(3)) for x in range(3)) or all(grille[i][i] == j for i in range(3)) or all(grille[i][2-i] == j for i in range(3))
 
 # Boucle du jeu
-while True:
+running = True
+while running:
     dessiner()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit()
-            exit()
+            running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             x, y = event.pos[0] // (T//3), event.pos[1] // (T//3)
             if gagnant or all(all(cell is not None for cell in row) for row in grille):
@@ -81,3 +90,6 @@ while True:
                     gagnant = f"Joueur {'1' if joueur == 'X' else '2'}"
                     pygame.mixer.Sound.play(son_victoire)
                 joueur = 'O' if joueur == 'X' else 'X'
+
+pygame.quit()
+sys.exit()
