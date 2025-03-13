@@ -51,6 +51,11 @@ def dessiner():
         pygame.draw.rect(screen, (255, 0, 0), (T//4, T//2, T//2, 50))
         text_btn = font.render("Recommencer", True, (0, 0, 0))
         screen.blit(text_btn, (T//4 + 20, T//2 + 10))
+
+    # Afficher "yanis26x" en bas à droite
+    font_signature = pygame.font.Font(None, 30)
+    signature = font_signature.render("yanis26x", True, (255, 0, 255))  # Couleur fuchsia
+    screen.blit(signature, (T - 100, T - 30))
     pygame.display.flip()
 
 # Vérifier la victoire
