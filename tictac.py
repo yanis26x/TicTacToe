@@ -10,7 +10,7 @@ son_victoire = pygame.mixer.Sound("./OST/yay.wav")
 # Création de la fenêtre
 T = 500
 screen = pygame.display.set_mode((T, T))
-pygame.display.set_caption("Tic-Tac-Toe")
+pygame.display.set_caption("Tic-Tac-Toe26x")
 
 # Chargement des images
 image = pygame.image.load("sang.png")
