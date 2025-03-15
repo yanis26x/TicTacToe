@@ -15,6 +15,8 @@ def get_path(relative_path):
 pygame.mixer.music.load(get_path("OST/musicCool.wav"))  # Musique de fond
 pygame.mixer.music.play(-1)  # Lecture en boucle
 son_victoire = pygame.mixer.Sound(get_path("OST/yay.wav"))
+son_dahak = pygame.mixer.Sound(get_path("OST/BASKETpELE.wav"))
+
 
 # Création de la fenêtre
 T = 500
@@ -55,7 +57,8 @@ def dessiner():
         text_btn = font.render("Recommencer", True, (0, 0, 0))
         screen.blit(text_btn, (T//4 + 20, T//2 + 10))
     elif all(all(cell is not None for cell in row) for row in grille):
-        text = font.render("Vous êtes trop cons !", True, (255, 0, 0))
+
+        text = font.render("TES UN GROS SAC DE PATATES, TES POURIE !", True, (255, 0, 0))
         screen.blit(text, (T//6, T//3))
         pygame.draw.rect(screen, (255, 0, 0), (T//4, T//2, T//2, 50))
         text_btn = font.render("Recommencer", True, (0, 0, 0))
@@ -90,6 +93,7 @@ while running:
                     gagnant = f"Joueur {'1' if joueur == 'X' else '2'}"
                     pygame.mixer.Sound.play(son_victoire)
                 joueur = 'O' if joueur == 'X' else 'X'
+                pygame.mixer.Sound.play(son_dahak)
 
 pygame.quit()
 sys.exit()
