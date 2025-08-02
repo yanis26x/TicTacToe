@@ -1,0 +1,13 @@
+# Ignorer les fichiers texte de test
+testeGIT.txt
+
+# Ignorer les fichiers temporaires
+*.log
+*.tmp
+*.swp
+
+# Ignorer les fichiers compilés
+*.pyc
+*.class
+dist/
+build/
