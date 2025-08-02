@@ -1,5 +1,5 @@
-# Ignorer les fichiers texte de test
-testeGIT.txt
+# Ignorer les fichiers specefiques 
+TODO.txt
 
 # Ignorer les fichiers temporaires
 *.log
