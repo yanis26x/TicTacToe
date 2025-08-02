@@ -16,6 +16,7 @@ pygame.mixer.music.load(get_path("OST/musicCool.wav"))  # Musique de fond
 pygame.mixer.music.play(-1)  # Lecture en boucle
 son_victoire = pygame.mixer.Sound(get_path("OST/yay.wav"))
 son_dahak = pygame.mixer.Sound(get_path("OST/BASKETpELE.wav"))
+son_woo = pygame.mixer.Sound(get_path("OST/woo.wav"))
 
 
 # Création de la fenêtre
@@ -93,7 +94,7 @@ while running:
                     gagnant = f"Joueur {'1' if joueur == 'X' else '2'}"
                     pygame.mixer.Sound.play(son_victoire)
                 joueur = 'O' if joueur == 'X' else 'X'
-                pygame.mixer.Sound.play(son_dahak)
+                pygame.mixer.Sound.play(son_woo) #avant c t -> son_dahak
 
 pygame.quit()
 sys.exit()
