@@ -1,3 +1,0 @@
-([('TicTacToe26x',
-   '/Users/yanis/Desktop/TicTacToe/dist/TicTacToe26x',
-   'EXECUTABLE')],)
