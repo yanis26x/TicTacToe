@@ -1,3 +1,4 @@
+from StartScreen import show_start_screen
 import pygame
 import os
 import sys
@@ -67,7 +68,7 @@ def dessiner():
     
     # Afficher "yanis26x" en bas à droite
     font_signature = pygame.font.Font(None, 30)
-    signature = font_signature.render("yanis26x", True, (255, 0, 255))  # Couleur fuchsia
+    signature = font_signature.render("yanis26x", True, (255, 0, 255))  #@yanis27x A METTRE !!!!!!!!!!!!!!!!
     screen.blit(signature, (T - 100, T - 30))
     pygame.display.flip()
 
@@ -75,6 +76,7 @@ def dessiner():
 def victoire(j):
     return any(all(grille[y][x] == j for x in range(3)) for y in range(3)) or any(all(grille[y][x] == j for y in range(3)) for x in range(3)) or all(grille[i][i] == j for i in range(3)) or all(grille[i][2-i] == j for i in range(3))
 
+show_start_screen(screen, T) # ecrand start
 # Boucle du jeu
 running = True
 while running:
